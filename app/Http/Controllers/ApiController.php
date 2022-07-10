@@ -129,4 +129,15 @@ class ApiController extends Controller
         }
         return json_encode($response);
     }
+
+    public function importUsers(Request $request){
+        try {
+            $quantity = (int)$request->input('number_of_users');
+            factory(User::class, (int)$quantity)->create();
+            $response = ['result' => true, 'message' => "Information of $quantity professionals has been imported"];
+        } catch (Exception $exception){
+            $response = ['result' => false, 'message' => 'Error has been encountered: ' . $exception->getMessage()];
+        }
+        return json_encode($response);
+    }
 }
