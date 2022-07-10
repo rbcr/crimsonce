@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::post('/v1/login', [\App\Http\Controllers\ApiController::class, 'login']);
+Route::post('/v1/login', [\App\Http\Controllers\AuthController::class, 'login']);
 
 Route::group(['middleware' => 'auth:api'], function() {
-    Route::get('/v1/logout', [\App\Http\Controllers\ApiController::class, 'logout']);
+    Route::get('/v1/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::post('/v1/add-user', [\App\Http\Controllers\ApiController::class, 'addUser']);
+    Route::put('/v1/update-user', [\App\Http\Controllers\ApiController::class, 'updateUser']);
+    Route::delete('/v1/delete-user', [\App\Http\Controllers\ApiController::class, 'deleteUser']);
 });
