@@ -37,4 +37,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function contacts(){
+        return $this->belongsToMany(
+            User::class,
+            'professional_network',
+            'professional_id',
+            'contact_id'
+        )->withPivot('professional_id');
+    }
+
+    public function badge(){
+        return $this->hasOne(
+            Badge::class,
+            'id',
+            'CurrentBadge'
+        );
+    }
 }

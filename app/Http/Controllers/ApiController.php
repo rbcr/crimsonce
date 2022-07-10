@@ -64,6 +64,48 @@ class ApiController extends Controller
     }
 
     /**
+     * Get current professional
+     *
+     * @return array{result: boolean, message: string, data: array}[
+     *  'FirstName' => string
+     *  'LastName' => string
+     *  'Email' => string
+     *  'ContryCode' => string
+     *  'CurrentBadge' => string
+     *  'Contacts' => array[] object User
+     * ]
+     */
+    public function getUser(Request $request){
+        try {
+            $user = $request->user();
+            $contacts = [];
+            foreach ($user->contacts->sortBy('FirstName') as $contact)
+                $contacts[] = [
+                    'FirstName' => $contact->FirstName,
+                    'LastName' => $contact->LastName,
+                    'Email' => $contact->email,
+                    'CountryCode' => $contact->CountryCode,
+                    'CurrentBadge' => $contact->badge->name
+                ];
+            $response = [
+                'result' => true,
+                'message' => 'Professional has been successfully updated',
+                'data' => [
+                    'FirstName' => $user->FirstName,
+                    'LastName' => $user->LastName,
+                    'Email' => $user->email,
+                    'CountryCode' => $user->CountryCode,
+                    'CurrentBadge' => $user->badge->name,
+                    'Contacts' => $contacts
+                ]
+            ];
+        } catch (Exception $exception){
+            $response = ['result' => false, 'message' => 'Error has been encountered: ' . $exception->getMessage()];
+        }
+        return json_encode($response);
+    }
+
+    /**
      * Update professional
      *
      * @param  [string] FirstName (optional)
