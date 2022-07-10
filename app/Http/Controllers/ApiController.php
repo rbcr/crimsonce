@@ -111,6 +111,12 @@ class ApiController extends Controller
         return json_encode($response);
     }
 
+    /**
+     * Delete professionals
+     *
+     * @param  [int] id
+     * @return array{result: boolean, message: string, data: array}[]
+     */
     public function deleteUser(Request $request){
         try {
             $id = $request->user()->id;
@@ -130,6 +136,12 @@ class ApiController extends Controller
         return json_encode($response);
     }
 
+    /**
+     * Import professionals
+     *
+     * @param  [int] number_of_users
+     * @return array{result: boolean, message: string, data: array}[]
+     */
     public function importUsers(Request $request){
         try {
             $quantity = (int)$request->input('number_of_users');
