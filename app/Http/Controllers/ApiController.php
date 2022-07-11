@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
 {
+    public function index(){
+        return redirect('api/documentation');
+    }
+
     /**
      * Create professional
      *
@@ -89,7 +93,7 @@ class ApiController extends Controller
                 ];
             $response = [
                 'result' => true,
-                'message' => 'Professional has been successfully updated',
+                'message' => 'Professional has been found',
                 'data' => [
                     'FirstName' => $user->FirstName,
                     'LastName' => $user->LastName,
@@ -157,7 +161,7 @@ class ApiController extends Controller
      * Delete professionals
      *
      * @param  [int] id
-     * @return array{result: boolean, message: string, data: array}[]
+     * @return array{result: boolean, message: string}[]
      */
     public function deleteUser(Request $request){
         try {

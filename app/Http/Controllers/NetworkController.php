@@ -113,7 +113,7 @@ class NetworkController extends Controller
     /**
      * Add random number of contacts to network
      *
-     * @param  [string] email
+     * @param  [int] quantity
      * @return array{result: boolean, message: string}[]
      */
     public function addRandomContacts(Request $request, $quantity){

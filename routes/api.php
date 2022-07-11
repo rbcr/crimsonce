@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/v1', [\App\Http\Controllers\ApiController::class, 'index']);
+
 Route::post('/v1/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/v1/add-user', [\App\Http\Controllers\ApiController::class, 'addUser']);
 

@@ -1,0 +1,652 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Crimson Circle Energy Company",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http:/crimsonce.site/api/v1"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "description": "Login and user token generation",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "User email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "description": "access_token",
+                                            "format": "string",
+                                            "default": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDVkODA2YmFlMGYzYjE5MjdlYTg1OTRkYzgxYWIyM2RmOGZmNzMyYmI5OWIzYTA2ZDc3MTBjODdlZDdjYjk3NjkwMTdjMGI2YWNkM2NjMWUiLCJpYXQiOjE2NTc0ODczMjIsIm5iZiI6MTY1NzQ4NzMyMiwiZXhwIjoxNjg5MDIzMzIyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.TWExT0eRdupuaNOozzDZ2WbVexYrxvBfLk_dLcLf4_H1G9YoxP2n7ovydVx67APVsAR_b4lP5tVKhyGQ-edCYC0e9les9A6CeQHtYpl0oiJ3ExgFdOQj4xPMiT2kSd3GeNHHzBqkgZmPCtIgBKUMyTOO2bU0_3oV2_S5Qmq9bAZ9y_1WJhZ_NF3oSUy9WKwg199jbAtVhLQD0XIXQKVZyZMfFlqucsdyqL9tUQieNBMfQCrPZ3b3DYyEVFVOMBNgKfLwlWEn96zlufEvJty4oIgabcVeIdYbKVHjU4fPPpR020W8M75gLWL_9NvjP7ds8SUTKZW72v-MQwJdd6oLYjOBan82uI2mMChi88IXHvZTvyYw91i9zib--OrWtRZ1OlWzw1oNk0vRAVeDNi209enhtpcAR9plBY8in6kh7KBwF7jfEp_FfK-4_p5vEvuqVSTl-yk49GF96Q47IF_suRXCNQl9VT69L51V_7w0Yojwcig806v_miAEzQKzVn-0fKAHNfcowX4YXm5MankniJidlAbsODgfGI3b2_3HCjc0ElAiG6lwAIn4AkE2iz_HehZHdFquvFYM_OQ-DYgyzryUxIUiVzzu6H6FWP6tAIKvXtXXpZ2rp6Fzru67twIJ0xEXH5yDcrnwA_dQo59pTmjDvYQlCOVwZaHE2angy24"
+                                        },
+                                        "token_type": {
+                                            "description": "token_type",
+                                            "format": "string",
+                                            "default": "Bearer"
+                                        },
+                                        "expires_at": {
+                                            "description": "expires_at",
+                                            "format": "string",
+                                            "default": "2023-07-10 23:45:03"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "get": {
+                "tags": [
+                    "Login"
+                ],
+                "description": "Revoke the user token (logout)",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "description": "result",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "Successfully logged out"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/add-user": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Create professional",
+                "operationId": "addUser",
+                "parameters": [
+                    {
+                        "name": "FirstName",
+                        "in": "path",
+                        "description": "User first name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LastName",
+                        "in": "path",
+                        "description": "User last name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Email",
+                        "in": "path",
+                        "description": "User email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Password",
+                        "in": "path",
+                        "description": "Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "CountryCode",
+                        "in": "path",
+                        "description": "User country code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Professional has been successfully created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Professional has been successfully created"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/update-user": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Update professional",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "FirstName",
+                        "in": "path",
+                        "description": "User first name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LastName",
+                        "in": "path",
+                        "description": "User last name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Email",
+                        "in": "path",
+                        "description": "User email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Password",
+                        "in": "path",
+                        "description": "Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "CountryCode",
+                        "in": "path",
+                        "description": "User country code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Professional has been successfully updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Professional has been successfully updated"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/delete-user": {
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Delete professionals",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Professional has been successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Professional has been successfully deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/import-users": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Import professionals",
+                "operationId": "importUsers",
+                "parameters": [
+                    {
+                        "name": "number_of_users",
+                        "in": "path",
+                        "description": "Number of users to import",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Information of {quantity} professionals has been imported",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Information of 100 professionals has been imported"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get-user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Get current professional",
+                "operationId": "getUser",
+                "responses": {
+                    "200": {
+                        "description": "Professional has been found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Professional has been found"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "FirstName": {
+                                                        "type": "string",
+                                                        "example": "Marilou Schaden"
+                                                    },
+                                                    "LastName": {
+                                                        "type": "string",
+                                                        "example": "Quitzon"
+                                                    },
+                                                    "Email": {
+                                                        "type": "string",
+                                                        "example": "abernhard@thiel.info"
+                                                    },
+                                                    "CountryCode": {
+                                                        "type": "string",
+                                                        "example": "US"
+                                                    },
+                                                    "CurrentBadge": {
+                                                        "type": "string",
+                                                        "example": "Bronze"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/network/add": {
+            "post": {
+                "tags": [
+                    "Network"
+                ],
+                "description": "Add professional to network",
+                "operationId": "addToNetwork",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "User email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{contact->FirstName} {contact->LastName} has been added to your network",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Marilou Schaden Quitzon has been added to your network"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "contact_id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/network/delete": {
+            "delete": {
+                "tags": [
+                    "Network"
+                ],
+                "description": "Remove professional to network",
+                "operationId": "deleteToNetwork",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "User email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{contact->FirstName} {contact->LastName} has been removed from your network",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Marilou Schaden Quitzon has been removed from your network"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/network/list": {
+            "get": {
+                "tags": [
+                    "Network"
+                ],
+                "description": "Get network (direct or indirect) contacts list",
+                "operationId": "listNetwork",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "path",
+                        "description": "List direct or indirect contacts from professional network",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "path",
+                        "description": "Order list of contacts by FirstName, LastName or Email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "number_contacts": {
+                                            "type": "number",
+                                            "example": "1"
+                                        },
+                                        "filter": {
+                                            "type": "string",
+                                            "example": "FirstName"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "FirstName": {
+                                                        "type": "string",
+                                                        "example": "Marilou Schaden"
+                                                    },
+                                                    "LastName": {
+                                                        "type": "string",
+                                                        "example": "Quitzon"
+                                                    },
+                                                    "Email": {
+                                                        "type": "string",
+                                                        "example": "abernhard@thiel.info"
+                                                    },
+                                                    "CountryCode": {
+                                                        "type": "string",
+                                                        "example": "US"
+                                                    },
+                                                    "CurrentBadge": {
+                                                        "type": "string",
+                                                        "example": "Bronze"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/network/add-random/{quantity}": {
+            "get": {
+                "tags": [
+                    "Network"
+                ],
+                "description": "Add random number of contacts to network",
+                "operationId": "addRandomContacts",
+                "parameters": [
+                    {
+                        "name": "quantity",
+                        "in": "path",
+                        "description": "Number of users to add",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{no_contacts_added} contacts have been added to your network",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "10 contacts have been added to your network"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
