@@ -1,6 +1,6 @@
 ## About the project
 
-REST API application to manage the backend of a Professionals Network using Laravel 7 - http://crimsonce.rbcr.me/api/v1
+REST API application to manage the backend of a Professionals Network using Laravel 7 - http://crimsonce.rbcr.ninja/api/v1
 
 ## Installation and configuration
 
@@ -23,7 +23,7 @@ php artisan passport:install
 
 ## Documentation
 
-Parameters and information of the API can be found in http://crimsonce.rbcr.me/api/documentation
+Parameters and information of the API can be found in http://crimsonce.rbcr.ninja/api/documentation
 
 ## Entity Relationship Diagram
 
